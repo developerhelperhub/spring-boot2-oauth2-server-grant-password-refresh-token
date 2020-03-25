@@ -172,9 +172,9 @@ Here, I am using Postman to test the grant types. Please open the Postman and op
 * Select the "Autherization" tab and change the type to "Basic Auth". Enter the username and password of client id and client secrete. Click the "Update Request" button
 * Select the "Body" tab and select "x-www-form-urlencoded" option
 * Add the keys and values in the form
-** grant_type is password
-** username is mycloud
-** password is mycloud@1234
+  - grant_type is password
+  - username is mycloud
+  - password is mycloud@1234
 * Click the "Send" button.
 
 The API give the response contains
@@ -196,8 +196,8 @@ Open a new tab. We have to add below configuration and data in the tab.
 * Select the "Autherization" tab and change the type to "Basic Auth". Enter the username and password of client id and client secrete. Click the "Update Request" button
 * Select the "Body" tab and select "x-www-form-urlencoded" option
 * Add the keys and values in the form
-** grant_type is refresh_token
-** refresh_token is ```a0cae88d-eac7-4688-b09d-8c05b61ffe96```
+  - grant_type is refresh_token
+  - refresh_token is ```a0cae88d-eac7-4688-b09d-8c05b61ffe96```
 * Click the "Send" button.
  
 The API give the response contains
