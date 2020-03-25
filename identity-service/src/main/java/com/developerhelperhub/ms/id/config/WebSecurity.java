@@ -33,12 +33,20 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser(username).password(passwordEncoder().encode(password)).roles("USER");
 	}
 
+	/**
+	 * AuthenticationManager bean is creating. This bean is required to configured
+	 * in the authorization server to support the grant type "password".
+	 */
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
 
+	/**
+	 * UserDetailsService bean is creating. This bean is required to configured in
+	 * the authorization server to support the grant type "refresh_token".
+	 */
 	@Bean
 	@Override
 	public UserDetailsService userDetailsServiceBean() throws Exception {
