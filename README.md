@@ -164,6 +164,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 Above all changes added in the respective classes, we can run the spring boot application, this application run on 8081 and the context path will ```/auth```. We can use this url ```http://localhost:8081/auth/login``` to check, whether it is working or not.
 
+*Note:* I got an issue, when I implemented this code, ```authorization_code``` is not working. I am getting error "Unauthorized" when execute the ```/login```. This issue is fixed when I added ```@Order(1)``` annotation in the ```WebSecurity``` class level.
+
 ### To generate the tokens with grant type "password"
 
 Here, I am using Postman to test the grant types. Please open the Postman and open a new tab. We have to add below configuration and data in the tab.
