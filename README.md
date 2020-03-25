@@ -1,6 +1,6 @@
 # Spring Boot 2.2.5 Oauth2 Authentication Server and Client Application
 
-This repository contains the Oauth2 authentication server implementation which supports grant types are ```authorization_code```, ```password``` and ```refresh_token```. This example is continuing of the [Oauth2 Autherization Server and Client Application](https://github.com/developerhelperhub/spring-boot2-oauth2-server-and-client) example. I would suggest, please look previous implementation before looking this source code. In the previous example, ```authorization_code``` grant type is only supported.
+This repository contains the Oauth2 authentication server implementation which supports grant types are ```authorization_code```, ```password``` and ```refresh_token```. This example is continuation of the [Oauth2 Autherization Server and Client Application](https://github.com/developerhelperhub/spring-boot2-oauth2-server-and-client) example. I would suggest, please look previous implementation before looking this source code. In the previous example, ```authorization_code``` grant type is only supported.
 
 This repository contains three maven project. 
 * my-cloud-service: Its main module, it contains the dependecy management of our application.
@@ -166,7 +166,50 @@ Above all changes added in the respective classes, we can run the spring boot ap
 
 ### To generate the tokens with grant type "password"
 
+Here, I am using Postman to test the grant types. Please open the Postman and open a new tab. We have to add below configuration and data in the tab.
+* Method: POST
+* URL: http://localhost:8081/auth/oauth/token
+* Select the "Autherization" tab and change the type to "Basic Auth". Enter the username and password of client id and client secrete. Click the "Update Request" button
+* Select the "Body" tab and select "x-www-form-urlencoded" option
+* Add the keys and values in the form
+** grant_type is password
+** username is mycloud
+** password is mycloud@1234
+* Click the "Send" button.
 
+The API give the response contains
+```json
+{
+    "access_token": "590adfd7-3503-446a-ac0c-3c65341aaf12",
+    "token_type": "bearer",
+    "refresh_token": "a0cae88d-eac7-4688-b09d-8c05b61ffe96",
+    "expires_in": 43198,
+    "scope": "user_info"
+}
+```
+
+### To generate the tokens with grant type "refresh_token"
+
+Open a new tab. We have to add below configuration and data in the tab.
+* Method: POST
+* URL: http://localhost:8081/auth/oauth/token
+* Select the "Autherization" tab and change the type to "Basic Auth". Enter the username and password of client id and client secrete. Click the "Update Request" button
+* Select the "Body" tab and select "x-www-form-urlencoded" option
+* Add the keys and values in the form
+** grant_type is refresh_token
+** refresh_token is ```a0cae88d-eac7-4688-b09d-8c05b61ffe96```
+* Click the "Send" button.
+ 
+The API give the response contains
+```json
+{
+    "access_token": "162544f0-5dd5-4500-abe7-58c4be74bfab",
+    "token_type": "bearer",
+    "refresh_token": "c6c647d1-4985-4474-8374-e0f0b1bccf90",
+    "expires_in": 43198,
+    "scope": "user_info"
+}
+```
 
 ### Reference
 * [developer.okta.com](https://developer.okta.com/blog/2019/03/12/oauth2-spring-security-guide)
